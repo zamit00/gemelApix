@@ -2929,7 +2929,11 @@
                     
                      // חיפוש התשואות של המסלול בנתונים הגלובליים
                     let clientReturnYTD = 0, clientReturn = 0, clientReturn3Y = 0, clientReturn5Y = 0;
-                    clientReturnYTD=parseFloat(getMaslul[0].tesuaMitchilatshana);
+                   if (getMaslul && getMaslul.length > 0 && typeof getMaslul[0].tesuaMitchilatshana !== 'undefined') {
+                        clientReturnYTD = parseFloat(getMaslul[0].tesuaMitchilatshana) || 0;
+                    } else {
+                        clientReturnYTD = 0;
+                    }
                     clientReturn=parseFloat(getMaslul[0].tesuam);
                     clientReturn3Y=parseFloat(getMaslul[0].tesuam36);
                     clientReturn5Y=parseFloat(getMaslul[0].tesuam60);
